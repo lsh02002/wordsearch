@@ -1,3 +1,10 @@
+.app-main-box {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .main-box {
   width: 100%;
   height: 100%;
@@ -79,4 +86,31 @@
 
   font-size: 30px;
   background-color: orange;
+}
+
+.game-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0px;
+}
+
+.game-box-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0px;
+}
+
+.game-box-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid gray;
+  width: 35px;
+  height: 35px;
 }

@@ -2,20 +2,14 @@
 //import reportWebVitals from "./reportWebVitals";
 import Header from "./header";
 import Main from "./main";
-import Game from "./game";
 
 import "./admin.css";
 
 function Admin() {
   return (
-    <div class="admin-box">
-      <div>
-        <Header />
-        <Main />
-      </div>
-      <div>
-        <Game />
-      </div>
+    <div>
+      <Header />
+      <Main />
     </div>
   );
 }
