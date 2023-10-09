@@ -32,7 +32,7 @@ const handleSubmit = (event) => {
   event.preventDefault();
   getInputText();
 
-  window.open("./game", "game", "popup=no");
+  window.location.filename = "./game";
 };
 
 function Main() {
