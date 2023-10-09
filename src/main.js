@@ -1,12 +1,47 @@
 //import logo from "./logo.svg";
 import "./main.css";
+//import { answers } from "./store";
+
+const getInputText = () => {
+  let answers = [];
+  let k = 0;
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 3; j++) {
+      /*const input = document.querySelector(
+        `.form-board-block[data-index='${i}${j}']`
+      );
+      */
+      const title = document.querySelector(`[name='title${i}${j}']`);
+      //const title = document.querySelector(`[name='title${i}${j}']`).value;
+
+      if (title !== null && title !== undefined) {
+        if (title.value !== null && title.value !== undefined) {
+          answers[k] = title.value;
+          k++;
+        }
+      }
+    }
+  }
+  answers[k] = "";
+
+  alert(answers);
+  sessionStorage.setItem("answers", JSON.stringify(answers));
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  getInputText();
+
+  window.open("/game", "game", "popup=yes");
+};
 
 function Main() {
   return (
     <div class="main-box">
       <div class="main-box-message">Manage existing puzzles here</div>
       <div class="main-form">
-        <form class="word-form">
+        <form class="word-form" onSubmit={handleSubmit}>
           Title
           <br />
           <input type="text" name="title" alt="title" />
@@ -29,12 +64,12 @@ function Main() {
               <input type="text" name="title01" alt="title01" />
             </div>
             <div class="form-board-block" data-index="02">
-              <input type="text" name="title01" alt="title01" />
+              <input type="text" name="title02" alt="title02" />
             </div>
           </div>
           <div class="form-board-row row01">
             <div class="form-board-block" data-index="10">
-              <input type="text" name="title02" alt="title02" />
+              <input type="text" name="title10" alt="title10" />
             </div>
             <div class="form-board-block" data-index="11">
               <input type="text" name="title11" alt="title11" />
@@ -140,7 +175,7 @@ function Main() {
             Non-Personal (recommended)
             <br />
           </div>
-          <button class="form01-submit" type="submit">
+          <button class="form-submit" type="submit">
             Submit
           </button>
         </form>

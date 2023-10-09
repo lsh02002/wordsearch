@@ -1,0 +1,26 @@
+.game-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0px;
+}
+
+.game-box-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0px;
+}
+
+.game-box-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid gray;
+  width: 35px;
+  height: 35px;
+}
