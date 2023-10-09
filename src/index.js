@@ -5,7 +5,6 @@ import "./store";
 
 import "./index.css";
 import Admin from "./admin";
-import Game from "./game";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -14,8 +13,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Admin />} />
-        <Route path="admin" element={<Admin />} />
-        <Route path="game" element={<Game />} />
       </Routes>
     </BrowserRouter>
   );

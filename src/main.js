@@ -32,7 +32,9 @@ const handleSubmit = (event) => {
   event.preventDefault();
   getInputText();
 
-  window.open("game", "game", "popup=no");
+  const sub = document.querySelector(".form-submit");
+  sub.style = "color: white; background-color: green";
+  sub.innerHTML = "옆칸의 실행 버튼을 눌러보세요!!!";
 };
 
 function Main() {
