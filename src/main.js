@@ -15,13 +15,22 @@ function generateRandomChar() {
   return _char_;
 }
 
-function addNumllChars() {
+function addNullChars() {
   for (let j = 0; j < 100; j++) {
     if (gameBoard[j] === undefined || gameBoard[j] === null) {
       let random_ascii = generateRandomChar();
       gameBoard[j] = random_ascii;
       gameBoardColor[j] = "gray";
     }
+  }
+}
+
+function deletePrevChar(prev, current) {
+  let k = current;
+
+  while (k >= prev) {
+    gameBoard[k] = undefined;
+    k--;
   }
 }
 
@@ -38,6 +47,12 @@ function insertCharBoard() {
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
+        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
+          deletePrevChar(startPos, j);
+          i--;
+          break;
+        }
+
         gameBoard[j] = gameAnswers[i][k];
         gameBoardColor[j] = "#FF0000";
 
@@ -45,30 +60,53 @@ function insertCharBoard() {
       }
     } else if (insertMode === 1) {
       //수직 모드
-      //let startPos = Math.floor(Math.random() * (90 - gameAnswers[i].length));
+      let startPos = Math.floor(
+        Math.random() * ((10 - gameAnswers[i].length) * 9)
+      );
 
       let k = 0;
-      for (let j = 0; j < gameAnswers[i].length; j++) {
+      for (let j = startPos; j < gameAnswers[i].length; j++) {
+        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
+          deletePrevChar(startPos, j);
+          i--;
+          break;
+        }
+
         gameBoard[j * 9] = gameAnswers[i][k];
         gameBoardColor[j * 9] = "#00FF00";
 
         k++;
       }
     } else if (insertMode === 2) {
-      let startPos = Math.floor(Math.random() * (90 - gameAnswers[i].length));
+      let startPos = Math.floor(
+        Math.random() * ((10 - gameAnswers[i].length) * 9)
+      );
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
+        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
+          deletePrevChar(startPos, j);
+          i--;
+          break;
+        }
         gameBoard[j * 8] = gameAnswers[i][k];
         gameBoardColor[j * 8] = "#0000FF";
 
         k++;
       }
     } else if (insertMode === 3) {
-      let startPos = Math.floor(Math.random() * (90 - gameAnswers[i].length));
+      let startPos = Math.floor(
+        Math.random() * ((10 - gameAnswers[i].length) * 9)
+      );
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
+        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
+          deletePrevChar(startPos, j);
+          i--;
+          break;
+        }
+
         gameBoard[j * 10] = gameAnswers[i][k];
         gameBoardColor[j * 10] = "#F0F0F0";
 
@@ -77,7 +115,7 @@ function insertCharBoard() {
     }
   }
 
-  addNumllChars();
+  addNullChars();
 }
 
 function setOneStringBoard(i2, j2) {
