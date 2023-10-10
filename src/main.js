@@ -25,11 +25,11 @@ function addNullChars() {
   }
 }
 
-function deletePrevChar(prev, current) {
-  let k = current;
+function deletePrevChar(prev, current, skipNum) {
+  let k = current - 1;
 
-  while (k >= prev) {
-    gameBoard[k] = undefined;
+  while (k > prev) {
+    gameBoard[k * skipNum] = undefined;
     k--;
   }
 }
@@ -48,7 +48,7 @@ function insertCharBoard() {
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
         if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
-          deletePrevChar(startPos, j);
+          deletePrevChar(startPos, j, 1);
           i--;
           break;
         }
@@ -66,8 +66,8 @@ function insertCharBoard() {
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length; j++) {
-        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
-          deletePrevChar(startPos, j);
+        if (gameBoard[j * 9] !== null && gameBoard[j * 9] !== undefined) {
+          deletePrevChar(startPos, j, 9);
           i--;
           break;
         }
@@ -84,8 +84,8 @@ function insertCharBoard() {
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
-        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
-          deletePrevChar(startPos, j);
+        if (gameBoard[j * 8] !== null && gameBoard[j * 8] !== undefined) {
+          deletePrevChar(startPos, j, 8);
           i--;
           break;
         }
@@ -101,8 +101,8 @@ function insertCharBoard() {
 
       let k = 0;
       for (let j = startPos; j < gameAnswers[i].length + startPos; j++) {
-        if (gameBoard[j] !== null && gameBoard[j] !== undefined) {
-          deletePrevChar(startPos, j);
+        if (gameBoard[j * 10] !== null && gameBoard[j * 10] !== undefined) {
+          deletePrevChar(startPos, j, 10);
           i--;
           break;
         }
